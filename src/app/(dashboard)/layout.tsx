@@ -28,7 +28,7 @@ export default function DashboardLayout({
           {/* Logo */} 
           <div className='flex items-center gap-4'>
             <Image
-              src='/logo.png'
+              src='/my new logo.png'
               alt='Vinayak ERP'
               width={56}
               height={56}
