@@ -1,4 +1,3 @@
-'use client';
 import { Users } from 'lucide-react';
 
 import { EmployeeForm } from '@/features/employee/components/employee-form';
