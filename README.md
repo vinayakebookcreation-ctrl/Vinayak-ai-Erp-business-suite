@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Vinayak ERP AI Suite v1.0.0
 
-## Getting Started
+Production-ready ERP foundation for Indian businesses with GST billing, inventory management, purchase & sales workflows, professional PDF invoice generation, print support, real-time reports, and a scalable Next.js + Supabase architecture.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+* Authentication & Dashboard
+* Company Management
+* Branch Management
+* Employee Management
+* Supplier Management
+* Customer Management
+* Inventory & Stock Tracking
+* Purchase Management
+* Sales Management
+* GST Billing
+* Professional PDF Invoice Generation
+* Print Invoice Support
+* Reports Dashboard
+* Custom Branding & Logo Support
+
+---
+
+## 🛠 Tech Stack
+
+* Next.js 16
+* TypeScript
+* Supabase
+* PostgreSQL
+* Tailwind CSS
+* React Hook Form
+* Zod Validation
+* jsPDF + jspdf-autotable
+
+---
+
+## ⚙️ Installation
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open: **http://localhost:3000**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🗄 Environment Variables
 
-## Learn More
+Create `.env.local`
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📂 Project Structure
 
-## Deploy on Vercel
+```text
+src/
+├── app/
+├── features/
+├── lib/
+├── components/
+└── public/
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏷 Current Version
+
+### **v1.0.0 — Stable Release**
+
+This release includes the complete ERP foundation with PDF invoices, print support, reports dashboard, GST billing, and branding.
+
+---
+
+## 🗺 Roadmap
+
+* Roles & Permissions
+* Advanced Reports
+* WhatsApp Invoice Sharing
+* Email Invoices
+* Multi-tenant SaaS Version
+
+---
+
+## 👨‍💻 Author
+
+**Kautik Nai**
+Full-Stack Developer & Business Automation Expert
+📍 Vadodara, Gujarat, India
+
+---
+
+⭐ If you find this project useful, please give it a star on GitHub.
+
+**Vinayak ERP AI Suite v1.0.0 — Stable ERP foundation for Indian businesses 🚀**
