@@ -14,6 +14,7 @@ import {
   LogOut,
 } from 'lucide-react';
 
+
 const menuItems = [
   { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { title: 'Company', href: '/company', icon: Building2 },
