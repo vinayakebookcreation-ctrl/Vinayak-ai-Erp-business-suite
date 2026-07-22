@@ -11,6 +11,7 @@ import {
   UserRound,
   Package,
   ShoppingCart,
+  Receipt,
   Settings,
   LogOut,
 } from 'lucide-react';
@@ -25,6 +26,7 @@ const menuItems = [
   { title: 'Customer', href: '/customer', icon: UserRound },
   { title: 'Inventory', href: '/inventory', icon: Package },
   { title: 'Purchase', href: '/purchase', icon: ShoppingCart },
+  { title: 'Sales', href: '/sales', icon: Receipt },
 ];
 
 export function Sidebar() {
