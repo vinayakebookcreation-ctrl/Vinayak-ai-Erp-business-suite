@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Trash2, Receipt } from 'lucide-react';
+import { Trash2, Receipt, Download, Printer } from 'lucide-react';
 
 import { SalesService } from '../services/sales.service';
+import { generateInvoicePDF } from '../utils/generate-invoice-pdf';
+import { printInvoice } from '../utils/print-invoice';
+
 import type { SalesInvoice } from '../types';
 
 export function SalesTable() {
@@ -74,13 +77,10 @@ export function SalesTable() {
 
   return (
     <div className='overflow-hidden rounded-xl border bg-white shadow-sm'>
-
       <div className='overflow-x-auto'>
         <table className='min-w-full divide-y divide-gray-200'>
-
           <thead className='bg-gray-50'>
             <tr>
-
               <th className='px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600'>
                 Invoice
               </th>
@@ -112,10 +112,8 @@ export function SalesTable() {
           </thead>
 
           <tbody className='divide-y divide-gray-200 bg-white'>
-
             {invoices.map((invoice) => (
               <tr key={invoice.id} className='hover:bg-gray-50'>
-
                 <td className='px-6 py-4 font-semibold text-gray-900'>
                   {invoice.invoice_number}
                 </td>
@@ -167,14 +165,67 @@ export function SalesTable() {
                 </td>
 
                 {/* Actions */}
-                <td className='px-6 py-4 text-right'>
-                  <button
-                    onClick={() => handleDelete(invoice.id)}
-                    className='rounded-lg border border-red-300 p-2 text-red-600 hover:bg-red-50'
-                    title='Delete'
-                  >
-                    <Trash2 className='h-4 w-4' />
-                  </button>
+                <td className='px-6 py-4'>
+                  <div className='flex justify-end gap-2'>
+
+                    {/* Download PDF */}
+                    <button
+                      onClick={() =>
+                        generateInvoicePDF({
+                          invoice_number: invoice.invoice_number,
+                          invoice_date: invoice.invoice_date,
+
+                          customer_name:
+                            invoice.customer?.customer_name ?? 'Customer',
+
+                          customer_phone:
+                            invoice.customer?.phone ?? '',
+
+                          customer_gst:
+                            invoice.customer?.gst_number ?? '',
+
+                          items:
+                            invoice.items?.map((item: any) => ({
+                              product_name:
+                                item.product?.product_name ?? 'Product',
+
+                              quantity: Number(item.quantity),
+
+                              rate: Number(item.sale_price),
+
+                              gst_percent: Number(item.gst_percent),
+                            })) ?? [],
+
+                          subtotal: Number(invoice.subtotal),
+                          gst_amount: Number(invoice.gst_amount),
+                          grand_total: Number(invoice.grand_total),
+                        })
+                      }
+                      className='rounded-lg border border-indigo-300 p-2 text-indigo-600 hover:bg-indigo-50'
+                      title='Download PDF'
+                    >
+                      <Download className='h-4 w-4' />
+                    </button>
+
+                    {/* Print Invoice */}
+                    <button
+                      onClick={() => printInvoice(invoice.invoice_number)}
+                      className='rounded-lg border border-slate-300 p-2 text-slate-700 hover:bg-slate-50'
+                      title='Print Invoice'
+                    >
+                      <Printer className='h-4 w-4' />
+                    </button>
+
+                    {/* Delete */}
+                    <button
+                      onClick={() => handleDelete(invoice.id)}
+                      className='rounded-lg border border-red-300 p-2 text-red-600 hover:bg-red-50'
+                      title='Delete'
+                    >
+                      <Trash2 className='h-4 w-4' />
+                    </button>
+
+                  </div>
                 </td>
               </tr>
             ))}

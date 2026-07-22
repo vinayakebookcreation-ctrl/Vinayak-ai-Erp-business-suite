@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+
 import {
   LayoutDashboard,
   Building2,
@@ -15,7 +17,6 @@ import {
   Settings,
   LogOut,
 } from 'lucide-react';
-
 
 const menuItems = [
   { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -34,16 +35,31 @@ export function Sidebar() {
 
   return (
     <aside className='flex h-screen w-72 flex-col border-r border-slate-800 bg-slate-900 text-white'>
+
       {/* Logo */}
       <div className='border-b border-slate-800 p-6'>
         <div className='flex items-center gap-3'>
-          <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 font-bold text-lg'>
-            V
+
+          {/* Company Logo */}
+          <div className='flex h-15 w-15 items-center justify-center rounded-xl bg-white p-1 shadow-lg'>
+            <Image
+              src='/my new logo.png'
+              alt='Vinayak ERP Logo'
+              width={46 }
+              height={46}
+              className='object-contain'
+              priority
+            />
           </div>
 
           <div>
-            <h1 className='text-lg font-bold'>Vinayak ERP</h1>
-            <p className='text-xs text-slate-400'>AI Business Suite</p>
+            <h1 className='text-lg font-bold tracking-wide'>
+              Vinayak ERP
+            </h1>
+
+            <p className='text-xs text-slate-400'>
+              AI Business Suite
+            </p>
           </div>
         </div>
       </div>
@@ -72,7 +88,8 @@ export function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className='border-t border-slate-800 p-4 space-y-2'>
+      <div className='space-y-2 border-t border-slate-800 p-4'>
+
         <button className='flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-white'>
           <Settings className='h-5 w-5' />
           Settings

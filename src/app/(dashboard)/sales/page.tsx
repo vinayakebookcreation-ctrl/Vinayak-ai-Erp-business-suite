@@ -1,5 +1,6 @@
 import { Receipt } from 'lucide-react';
 
+
 import { SalesForm } from '@/features/sales/components/sales-form';
 import { SalesTable } from '@/features/sales/components/sales-table';
 
