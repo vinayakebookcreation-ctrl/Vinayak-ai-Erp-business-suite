@@ -4,6 +4,10 @@ import { useEffect, useState } from 'react';
 
 import { ReportsService } from '@/features/reports/reports.service';
 
+import { SalesChart } from '@/components/charts/sales-chart';
+import { PurchaseChart } from '@/components/charts/purchase-chart';
+import { LowStockCard } from '../../../components/dashboard/low-stock-card';
+
 type DashboardStats = {
   totalSales: number;
   totalPurchase: number;
@@ -12,6 +16,7 @@ type DashboardStats = {
 };
 
 export default function ReportsPage() {
+
   const [stats, setStats] = useState<DashboardStats>({
     totalSales: 0,
     totalPurchase: 0,
@@ -22,6 +27,7 @@ export default function ReportsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
     async function loadStats() {
       try {
         const data = await ReportsService.getDashboardStats();
@@ -39,6 +45,7 @@ export default function ReportsPage() {
   if (loading) {
     return (
       <div className='rounded-xl border bg-white p-8 text-center'>
+
         <div className='mx-auto h-8 w-8 animate-spin rounded-full border-4 border-indigo-600 border-t-transparent' />
 
         <p className='mt-3 text-sm text-gray-500'>
@@ -51,7 +58,9 @@ export default function ReportsPage() {
   return (
     <div className='space-y-6'>
 
+      {/* Header */}
       <div>
+
         <h1 className='text-2xl font-bold text-slate-900'>
           Reports Dashboard
         </h1>
@@ -61,9 +70,11 @@ export default function ReportsPage() {
         </p>
       </div>
 
+      {/* Stats Cards */}
       <div className='grid gap-4 md:grid-cols-4'>
 
         <div className='rounded-xl border bg-white p-6'>
+
           <div className='text-sm text-slate-500'>
             Total Sales
           </div>
@@ -74,6 +85,7 @@ export default function ReportsPage() {
         </div>
 
         <div className='rounded-xl border bg-white p-6'>
+
           <div className='text-sm text-slate-500'>
             Total Purchase
           </div>
@@ -84,6 +96,7 @@ export default function ReportsPage() {
         </div>
 
         <div className='rounded-xl border bg-white p-6'>
+
           <div className='text-sm text-slate-500'>
             Total Customers
           </div>
@@ -94,6 +107,7 @@ export default function ReportsPage() {
         </div>
 
         <div className='rounded-xl border bg-white p-6'>
+
           <div className='text-sm text-slate-500'>
             Total Products
           </div>
@@ -102,18 +116,18 @@ export default function ReportsPage() {
             {stats.totalProducts}
           </div>
         </div>
-
       </div>
 
-      <div className='rounded-xl border bg-white p-6'>
-        <h2 className='text-lg font-semibold'>
-          Monthly Sales Chart
-        </h2>
+      {/* Charts Section */}
+      <div className='grid gap-6 lg:grid-cols-2'>
 
-        <div className='mt-4 flex h-64 items-center justify-center rounded-lg bg-slate-50 text-slate-400'>
-          Chart integration (next step)
-        </div>
+        <SalesChart />
+
+        <PurchaseChart />
       </div>
+
+      {/* Low Stock Alert */}
+      <LowStockCard />
 
     </div>
   );
